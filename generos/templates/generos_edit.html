@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Editar Gênero{% endblock %}
+{% block content %}
+  <h2>Editar Gênero</h2>
+  <form method="post" action="{% url 'generos_edit' genero.ID_genero %}">
+    {% csrf_token %}
+    <div class="row"><label>Nome</label><input name="nome" value="{{ genero.Nome_genero }}" required></div>
+    <button class="btn" type="submit">Salvar</button>
+  </form>
+{% endblock %}

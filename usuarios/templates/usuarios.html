@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Usuários{% endblock %}
+{% block content %}
+  <h2>Usuários</h2>
+  {% if dados %}
+    <table>
+      <thead><tr><th>ID</th><th>Nome</th><th>Email</th><th>Telefone</th><th>Multa</th><th>Ações</th></tr></thead>
+      <tbody>
+        {% for u in dados %}
+          <tr>
+            <td>{{ u.ID_usuario }}</td>
+            <td>{{ u.Nome_usuario }}</td>
+            <td>{{ u.Email }}</td>
+            <td>{{ u.Numero_telefone }}</td>
+            <td>{{ u.Multa_atual }}</td>
+            <td class="actions">
+              <a href="{% url 'usuario_detalhes' u.ID_usuario %}">Ver</a>
+              <a href="{% url 'usuarios_edit' u.ID_usuario %}">Editar</a>
+              <a href="{% url 'usuarios_delete' u.ID_usuario %}">Excluir</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}<p>Nenhum usuário cadastrado.</p>{% endif %}
+{% endblock %}

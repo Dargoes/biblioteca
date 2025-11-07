@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block title %}Detalhes do Gênero{% endblock %}
+{% block content %}
+  <h2>{{ genero.Nome_genero }}</h2>
+  <a class="btn" href="{% url 'generos' %}">Voltar</a>
+{% endblock %}

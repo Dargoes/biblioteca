@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Detalhes do Livro{% endblock %}
+{% block content %}
+  <h2>{{ livro.Titulo }}</h2>
+  <p><strong>Autor:</strong> {{ livro.Nome_autor }}</p>
+  <p><strong>Gênero:</strong> {{ livro.Nome_genero }}</p>
+  <p><strong>Editora:</strong> {{ livro.Nome_editora }}</p>
+  <p><strong>Ano:</strong> {{ livro.Ano_publicacao }}</p>
+  <p><strong>Quantidade disponível:</strong> {{ livro.Quantidade_disponivel }}</p>
+  <p><strong>Resumo:</strong></p>
+  <p>{{ livro.Resumo }}</p>
+  <a class="btn" href="{% url 'livros' %}">Voltar</a>
+{% endblock %}

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{% block title %}Biblioteca{% endblock %}</title>
+  <style>
+    body{font-family: Arial, sans-serif; margin:0; padding:0; background:#f5f5f5}
+    header{background:#2c3e50;color:white;padding:12px 20px}
+    nav a{color:white;margin-right:12px;text-decoration:none}
+    main{padding:20px; max-width:1000px;margin:20px auto;background:white;border-radius:6px;box-shadow:0 2px 6px rgba(0,0,0,0.08)}
+    table{width:100%;border-collapse:collapse;margin-top:10px}
+    th,td{padding:8px;border:1px solid #ddd;text-align:left}
+    form .row{margin-bottom:10px}
+    label{display:block;font-weight:600;margin-bottom:4px}
+    input[type=text], input[type=date], input[type=number], textarea, select{width:100%;padding:8px;border:1px solid #ccc;border-radius:4px}
+    .btn{display:inline-block;padding:8px 12px;background:#3498db;color:white;text-decoration:none;border-radius:4px}
+    .msg{padding:8px;border-radius:4px;margin-bottom:10px}
+    .success{background:#eaf7ee;color:#1a7f39;border:1px solid #b7e6c6}
+    .error{background:#fdecea;color:#8a1f1f;border:1px solid #f5c6c6}
+    .info{background:#eef7ff;color:#0b57a4;border:1px solid #cfe8ff}
+    .actions a{margin-right:6px}
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="{% url 'index' %}">Início</a>
+      <a href="{% url 'autores' %}">Autores</a>
+      <a href="{% url 'generos' %}">Gêneros</a>
+      <a href="{% url 'editoras' %}">Editoras</a>
+      <a href="{% url 'livros' %}">Livros</a>
+      <a href="{% url 'usuarios' %}">Usuários</a>
+      <a href="{% url 'emprestimos' %}">Empréstimos</a>
+      {% if request.session.usuario_logado %}
+        <a href="{% url 'logout' %}">Sair ({{ request.session.nome_usuario }})</a>
+      {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'register' %}">Registrar</a>
+      {% endif %}
+    </nav>
+  </header>
+
+  <main>
+    {% if messages %}
+      {% for m in messages %}
+        <div class="msg {% if m.tags %}{{ m.tags }}{% endif %}">{{ m }}</div>
+      {% endfor %}
+    {% endif %}
+
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

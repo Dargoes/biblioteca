@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Detalhes do Empréstimo{% endblock %}
+{% block content %}
+  <h2>Empréstimo #{{ emprestimo.ID_emprestimo }}</h2>
+  <p><strong>Usuário:</strong> {{ emprestimo.Nome_usuario }}</p>
+  <p><strong>Livro:</strong> {{ emprestimo.Titulo }}</p>
+  <p><strong>Data empréstimo:</strong> {{ emprestimo.Data_emprestimo }}</p>
+  <p><strong>Data prevista:</strong> {{ emprestimo.Data_devolucao_prevista }}</p>
+  <p><strong>Data devolução real:</strong> {{ emprestimo.Data_devolucao_real }}</p>
+  <p><strong>Status:</strong> {{ emprestimo.Status_emprestimo }}</p>
+  <a class="btn" href="{% url 'emprestimos' %}">Voltar</a>
+{% endblock %}

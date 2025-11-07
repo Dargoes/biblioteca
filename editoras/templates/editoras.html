@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Editoras{% endblock %}
+{% block content %}
+  <h2>Editoras</h2>
+  <a class="btn" href="{% url 'editoras_add' %}">Adicionar Editora</a>
+  {% if dados %}
+    <table>
+      <thead><tr><th>ID</th><th>Nome</th><th>Endereço</th><th>Ações</th></tr></thead>
+      <tbody>
+        {% for e in dados %}
+          <tr>
+            <td>{{ e.ID_editora }}</td>
+            <td>{{ e.Nome_editora }}</td>
+            <td>{{ e.Endereco_editora }}</td>
+            <td class="actions">
+              <a href="{% url 'editora_detalhes' e.ID_editora %}">Ver</a>
+              <a href="{% url 'editoras_edit' e.ID_editora %}">Editar</a>
+              <a href="{% url 'editoras_delete' e.ID_editora %}">Excluir</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}<p>Nenhuma editora cadastrada.</p>{% endif %}
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}Editar Empréstimo{% endblock %}
+{% block content %}
+  <h2>Editar Empréstimo</h2>
+  <form method="post" action="{% url 'emprestimos_edit' emprestimo.ID_emprestimo %}">
+    {% csrf_token %}
+    
+    <div class="row">
+      <label>Usuário</label>
+      <select name="usuario">
+        {% for u in usuarios %}
+          <option value="{{ u.ID_usuario }}" {% if u.ID_usuario == emprestimo.Usuario_id %}selected{% endif %}>{{ u.Nome_usuario }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="row">
+      <label>Livro</label>
+      <select name="livro">
+        {% for l in livros %}
+          <option value="{{ l.ID_livro }}" {% if l.ID_livro == emprestimo.Livro_id %}selected{% endif %}>{{ l.Titulo }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="row">
+      <label>Data empréstimo</label>
+      <input name="data_emp" type="date" value="{{ emprestimo.Data_emprestimo }}">
+    </div>
+
+    <div class="row">
+      <label>Data prevista</label>
+      <input name="data_prev" type="date" value="{{ emprestimo.Data_devolucao_prevista }}">
+    </div>
+
+    <div class="row">
+      <label>Data real</label>
+      <input name="data_real" type="date" value="{{ emprestimo.Data_devolucao_real }}">
+    </div>
+
+    <div class="row">
+      <label>Status</label>
+      <select name="status">
+        <option {% if emprestimo.Status_emprestimo == 'Emprestado' %}selected{% endif %}>Emprestado</option>
+        <option {% if emprestimo.Status_emprestimo == 'Devolvido' %}selected{% endif %}>Devolvido</option>
+        <option {% if emprestimo.Status_emprestimo == 'Atrasado' %}selected{% endif %}>Atrasado</option>
+      </select>
+    </div>
+
+    <button class="btn" type="submit">Salvar</button>
+  </form>
+{% endblock %}

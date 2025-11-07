@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Editar Autor{% endblock %}
+{% block content %}
+  <h2>Editar Autor</h2>
+  <form method="post" action="{% url 'autores_edit' autor.ID_autor %}">
+    {% csrf_token %}
+    <div class="row"><label>Nome</label><input name="nome" value="{{ autor.Nome_autor }}" required></div>
+    <div class="row"><label>Nacionalidade</label><input name="nacionalidade" value="{{ autor.Nacionalidade }}"></div>
+    <div class="row"><label>Data de Nascimento</label><input name="data_nasc" type="date" value="{{ autor.Data_nascimento }}"></div>
+    <div class="row"><label>Biografia</label><textarea name="bio">{{ autor.Biografia }}</textarea></div>
+    <button class="btn" type="submit">Salvar</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Autores{% endblock %}
+{% block content %}
+  <h2>Autores</h2>
+  <a class="btn" href="{% url 'autores_add' %}">Adicionar Autor</a>
+  {% if dados %}
+    <table>
+      <thead><tr><th>ID</th><th>Nome</th><th>Nacionalidade</th><th>Data Nasc</th><th>Ações</th></tr></thead>
+      <tbody>
+        {% for autor in dados %}
+          <tr>
+            <td>{{ autor.ID_autor }}</td>
+            <td>{{ autor.Nome_autor }}</td>
+            <td>{{ autor.Nacionalidade }}</td>
+            <td>{{ autor.Data_nascimento }}</td>
+            <td class="actions">
+              <a href="{% url 'autor_detalhes' autor.ID_autor %}">Ver</a>
+              <a href="{% url 'autores_edit' autor.ID_autor %}">Editar</a>
+              <a href="{% url 'autores_delete' autor.ID_autor %}">Excluir</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Nenhum autor cadastrado.</p>
+  {% endif %}
+{% endblock %}

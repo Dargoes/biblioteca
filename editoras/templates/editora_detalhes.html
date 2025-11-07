@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block title %}Detalhes da Editora{% endblock %}
+{% block content %}
+  <h2>{{ editora.Nome_editora }}</h2>
+  <p><strong>Endereço:</strong> {{ editora.Endereco_editora }}</p>
+  <a class="btn" href="{% url 'editoras' %}">Voltar</a>
+{% endblock %}

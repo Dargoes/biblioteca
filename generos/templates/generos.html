@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Gêneros{% endblock %}
+{% block content %}
+  <h2>Gêneros</h2>
+  <a class="btn" href="{% url 'generos_add' %}">Adicionar Gênero</a>
+  {% if dados %}
+    <table>
+      <thead><tr><th>ID</th><th>Nome</th><th>Ações</th></tr></thead>
+      <tbody>
+        {% for g in dados %}
+          <tr>
+            <td>{{ g.ID_genero }}</td>
+            <td>{{ g.Nome_genero }}</td>
+            <td class="actions">
+              <a href="{% url 'genero_detalhes' g.ID_genero %}">Ver</a>
+              <a href="{% url 'generos_edit' g.ID_genero %}">Editar</a>
+              <a href="{% url 'generos_delete' g.ID_genero %}">Excluir</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}<p>Nenhum gênero cadastrado.</p>{% endif %}
+{% endblock %}

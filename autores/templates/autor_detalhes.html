@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Detalhes do Autor{% endblock %}
+{% block content %}
+  <h2>{{ autor.Nome_autor }}</h2>
+  <p><strong>Nacionalidade:</strong> {{ autor.Nacionalidade }}</p>
+  <p><strong>Data de Nascimento:</strong> {{ autor.Data_nascimento }}</p>
+  <p><strong>Biografia:</strong></p>
+  <p>{{ autor.Biografia }}</p>
+  <a class="btn" href="{% url 'autores' %}">Voltar</a>
+{% endblock %}

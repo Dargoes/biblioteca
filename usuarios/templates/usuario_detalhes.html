@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Detalhes do Usuário{% endblock %}
+{% block content %}
+  <h2>{{ usuario.Nome_usuario }}</h2>
+  <p><strong>Email:</strong> {{ usuario.Email }}</p>
+  <p><strong>Telefone:</strong> {{ usuario.Numero_telefone }}</p>
+  <p><strong>Data inscrição:</strong> {{ usuario.Data_inscricao }}</p>
+  <p><strong>Multa atual:</strong> {{ usuario.Multa_atual }}</p>
+  <a class="btn" href="{% url 'usuarios' %}">Voltar</a>
+{% endblock %}
