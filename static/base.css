@@ -1,0 +1,13 @@
+body {
+    background-color: #2d2d2d;
+    color: white;
+}
+
+.container {
+    max-width: 75%;
+    margin-block: 50px;
+}
+
+table {
+    margin-block: 20px;
+}

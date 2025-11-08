@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
-{% block title %}Usuários{% endblock %}
 {% block content %}
   <h2>Usuários</h2>
+  <a href="{% url 'register' %}"><button class="btn btn-success">Criar novo usuário</button></a>
   {% if dados %}
-    <table>
+    <table class="table table-striped-columns">
       <thead><tr><th>ID</th><th>Nome</th><th>Email</th><th>Telefone</th><th>Multa</th><th>Ações</th></tr></thead>
       <tbody>
         {% for u in dados %}
@@ -14,9 +14,9 @@
             <td>{{ u.Numero_telefone }}</td>
             <td>{{ u.Multa_atual }}</td>
             <td class="actions">
-              <a href="{% url 'usuario_detalhes' u.ID_usuario %}">Ver</a>
-              <a href="{% url 'usuarios_edit' u.ID_usuario %}">Editar</a>
-              <a href="{% url 'usuarios_delete' u.ID_usuario %}">Excluir</a>
+              <a href="{% url 'usuario_detalhes' u.ID_usuario %}"><button class="btn btn-primary btn-sm">Ver</button></a>
+              <a href="{% url 'usuarios_edit' u.ID_usuario %}"><button class="btn btn-warning btn-sm">Editar</button></a>
+              <a href="{% url 'usuarios_delete' u.ID_usuario %}"><button class="btn btn-danger btn-sm">Excluir</button></a>
             </td>
           </tr>
         {% endfor %}

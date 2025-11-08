@@ -2,9 +2,9 @@
 {% block title %}Gêneros{% endblock %}
 {% block content %}
   <h2>Gêneros</h2>
-  <a class="btn" href="{% url 'generos_add' %}">Adicionar Gênero</a>
+  <a href="{% url 'generos_add' %}"><button class="btn btn-success">Adicionar gênero</button></a>
   {% if dados %}
-    <table>
+    <table class="table table-striped-columns">
       <thead><tr><th>ID</th><th>Nome</th><th>Ações</th></tr></thead>
       <tbody>
         {% for g in dados %}
@@ -12,9 +12,9 @@
             <td>{{ g.ID_genero }}</td>
             <td>{{ g.Nome_genero }}</td>
             <td class="actions">
-              <a href="{% url 'genero_detalhes' g.ID_genero %}">Ver</a>
-              <a href="{% url 'generos_edit' g.ID_genero %}">Editar</a>
-              <a href="{% url 'generos_delete' g.ID_genero %}">Excluir</a>
+              <a href="{% url 'genero_detalhes' g.ID_genero %}"><button class=" btn btn-primary">Ver</button></a>
+              <a href="{% url 'generos_edit' g.ID_genero %}"><button class=" btn btn-warning">Editar</button></a>
+              <a href="{% url 'generos_delete' g.ID_genero %}"><button class=" btn btn-danger">Excluir</button></a>
             </td>
           </tr>
         {% endfor %}

@@ -33,7 +33,7 @@ def editoras_add(request):
         end = request.POST['endereco']
         execute("INSERT INTO Editoras (Nome_editora, Endereco_editora) VALUES (%s, %s)", [nome, end])
         return redirect('editoras')
-    return render(request, 'editoras.html')
+    return render(request, 'editora_add.html')
 
 @login_required
 def editoras_edit(request, id):

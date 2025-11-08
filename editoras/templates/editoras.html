@@ -2,9 +2,9 @@
 {% block title %}Editoras{% endblock %}
 {% block content %}
   <h2>Editoras</h2>
-  <a class="btn" href="{% url 'editoras_add' %}">Adicionar Editora</a>
+  <a href="{% url 'editoras_add' %}"><button class="btn btn-success">Adicionar editora</button></a>
   {% if dados %}
-    <table>
+    <table class=" table table-striped-columns">
       <thead><tr><th>ID</th><th>Nome</th><th>Endereço</th><th>Ações</th></tr></thead>
       <tbody>
         {% for e in dados %}
@@ -13,9 +13,9 @@
             <td>{{ e.Nome_editora }}</td>
             <td>{{ e.Endereco_editora }}</td>
             <td class="actions">
-              <a href="{% url 'editora_detalhes' e.ID_editora %}">Ver</a>
-              <a href="{% url 'editoras_edit' e.ID_editora %}">Editar</a>
-              <a href="{% url 'editoras_delete' e.ID_editora %}">Excluir</a>
+              <a href="{% url 'editora_detalhes' e.ID_editora %}"><button class="btn btn-primary">Ver</button></a>
+              <a href="{% url 'editoras_edit' e.ID_editora %}"><button class="btn btn-warning">Editar</button></a>
+              <a href="{% url 'editoras_delete' e.ID_editora %}"><button class="btn btn-danger">Excluir</button></a>
             </td>
           </tr>
         {% endfor %}

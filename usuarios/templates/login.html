@@ -4,8 +4,8 @@
   <h2>Login</h2>
   <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
-    <div class="row"><label>Email</label><input name="email" required></div>
-    <div class="row"><label>Senha</label><input name="senha" type="password" required></div>
-    <button class="btn" type="submit">Entrar</button>
+    <div class="row mb-3"><label class="form-label">Email</label><input class="form-control" name="email" required></div>
+    <div class="row mb-3"><label class="form-label">Senha</label><input class="form-control" name="senha" type="password" required></div>
+    <button class="btn btn-success" type="submit">Entrar</button>
   </form>
 {% endblock %}

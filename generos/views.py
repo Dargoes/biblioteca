@@ -32,7 +32,7 @@ def generos_add(request):
         nome = request.POST['nome']
         execute("INSERT INTO Generos (Nome_genero) VALUES (%s)", [nome])
         return redirect('generos')
-    return render(request, 'generos.html')
+    return render(request, 'genero_add.html')
 
 @login_required
 def generos_edit(request, id):

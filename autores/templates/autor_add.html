@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>Cadastrar Autor</h1>
+        <form method="post" action="{% url 'autores_add' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" name="nome">
+            </div>
+            <div class="mb-3">
+                <label for="nacionalidade" class="form-label">Nacionalidade</label>
+                <input type="text" class="form-control" name="nacionalidade">
+            </div>
+            <div class="mb-3">
+                <label for="data_nasc" class="form-label">Data de Nascimento</label>
+                <input type="date" class="form-control" name="data_nasc">
+            </div>
+            <div class="mb-3">
+                <div class="form-floating">
+                    <textarea class="form-control" placeholder="" name="bio" style="height: 100px"></textarea>
+                    <label for="bio">Biografia</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success btn-lg">Enviar</button>
+        </form>
+    </div>
+{% endblock %}

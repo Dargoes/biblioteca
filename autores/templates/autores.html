@@ -2,9 +2,9 @@
 {% block title %}Autores{% endblock %}
 {% block content %}
   <h2>Autores</h2>
-  <a class="btn" href="{% url 'autores_add' %}">Adicionar Autor</a>
+  <a href="{% url 'autores_add' %}"><button class="btn btn-success">Adicionar autor</button></a>
   {% if dados %}
-    <table>
+    <table class="table table-striped-columns">
       <thead><tr><th>ID</th><th>Nome</th><th>Nacionalidade</th><th>Data Nasc</th><th>Ações</th></tr></thead>
       <tbody>
         {% for autor in dados %}
@@ -14,9 +14,9 @@
             <td>{{ autor.Nacionalidade }}</td>
             <td>{{ autor.Data_nascimento }}</td>
             <td class="actions">
-              <a href="{% url 'autor_detalhes' autor.ID_autor %}">Ver</a>
-              <a href="{% url 'autores_edit' autor.ID_autor %}">Editar</a>
-              <a href="{% url 'autores_delete' autor.ID_autor %}">Excluir</a>
+              <a href="{% url 'autor_detalhes' autor.ID_autor %}"><button class="btn btn-primary btn-sm">Ver</button></a>
+              <a href="{% url 'autores_edit' autor.ID_autor %}"><button class="btn btn-warning btn-sm">Editar</button></a>
+              <a href="{% url 'autores_delete' autor.ID_autor %}"><button class="btn btn-danger btn-sm">Excluir</button></a>
             </td>
           </tr>
         {% endfor %}

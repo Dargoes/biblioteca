@@ -36,7 +36,7 @@ def autores_add(request):
         execute("INSERT INTO Autores (Nome_autor, Nacionalidade, Data_nascimento, Biografia) VALUES (%s, %s, %s, %s)",
                 [nome, nac, data, bio])
         return redirect('autores')
-    return render(request, 'autores.html')
+    return render(request, 'autor_add.html')
 
 @login_required
 def autores_edit(request, id):
