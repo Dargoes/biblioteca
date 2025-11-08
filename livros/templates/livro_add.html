@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container text-white">
+        <h1>Cadastrar Livro</h1>
+        <form method="POST" action="{% url 'livros_add' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="titulo" class="form-label">Título</label>
+                <input type="text" class="form-control" name="titulo">
+            </div>
+            <div class="mb-3">
+                <label for="autor" class="form-label">Autor</label>
+                <select class="form-select" name="autor">
+                    <option selected>Escolher autor</option>
+                    {% for autor in autores %}
+                        <option value="{{ autor.ID_autor }}">{{ autor.Nome_autor }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="isbn" class="form-label">ISBN</label>
+                <input type="text" class="form-control" name="isbn">
+            </div>
+            <div class="mb-3">
+                <label for="ano" class="form-label">Ano de publicação</label>
+                <input type="number" class="form-control" name="ano">
+            </div>
+            <div class="mb-3">
+                <label for="genero" class="form-label">Gêneros</label>
+                <select class="form-select" name="genero">
+                    <option selected>Escolher gênero</option>
+                    {% for genero in generos %}
+                        <option value="{{ genero.ID_genero }}">{{ genero.Nome_genero }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="editora" class="form-label">Editora</label>
+                <select class="form-select" name="editora">
+                    <option selected>Escolher editora</option>
+                    {% for editora in editoras %}
+                        <option value="{{ editora.ID_editora }}">{{ editora.Nome_editora }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="quantidade" class="form-label">Quantidade disponível</label>
+                <input type="number" class="form-control" name="quantidade">
+            </div>
+            <div class="mb-3">
+                <div class="form-floating">
+                    <textarea class="form-control" placeholder="" name="resumo" style="height: 100px"></textarea>
+                    <label for="resumo">Resumo</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success btn-lg">Enviar</button>
+        </form>
+    </div>
+{% endblock %}

@@ -2,10 +2,10 @@
 {% block title %}Livros{% endblock %}
 {% block content %}
   <h2>Livros</h2>
-  <a class="btn" href="{% url 'livros_add' %}">Adicionar Livro</a>
+  <a href="{% url 'livros_add' %}"><button class="btn btn-success">Adicionar livro</button></a>
 
   {% if dados %}
-    <table>
+    <table class="table table-striped-columns">
       <thead><tr><th>ID</th><th>Título</th><th>Autor</th><th>Gênero</th><th>Editora</th><th>Quantidade</th><th>Ações</th></tr></thead>
       <tbody>
         {% for l in dados %}
@@ -17,35 +17,13 @@
             <td>{{ l.Editora_id }}</td>
             <td>{{ l.Quantidade_disponivel }}</td>
             <td class="actions">
-              <a href="{% url 'livro_detalhes' l.ID_livro %}">Ver</a>
-              <a href="{% url 'livros_edit' l.ID_livro %}">Editar</a>
-              <a href="{% url 'livros_delete' l.ID_livro %}">Excluir</a>
+              <a href="{% url 'livro_detalhes' l.ID_livro %}"><button class="btn btn-primary">Ver</button></a>
+              <a href="{% url 'livros_edit' l.ID_livro %}"><button class="btn btn-warning">Editar</button></a>
+              <a href="{% url 'livros_delete' l.ID_livro %}"><button class="btn btn-danger">Excluir</button></a>
             </td>
           </tr>
         {% endfor %}
       </tbody>
     </table>
   {% else %}<p>Nenhum livro cadastrado.</p>{% endif %}
-
-  {% if autores and generos and editoras %}
-    <h3>Adicionar Livro</h3>
-    <form method="post" action="{% url 'livros_add' %}">
-      {% csrf_token %}
-      <div class="row"><label>Título</label><input name="titulo" required></div>
-      <div class="row"><label>Autor</label>
-        <select name="autor">{% for a in autores %}<option value="{{ a.ID_autor }}">{{ a.Nome_autor }}</option>{% endfor %}</select>
-      </div>
-      <div class="row"><label>ISBN</label><input name="isbn"></div>
-      <div class="row"><label>Ano</label><input name="ano" type="number"></div>
-      <div class="row"><label>Gênero</label>
-        <select name="genero">{% for g in generos %}<option value="{{ g.ID_genero }}">{{ g.Nome_genero }}</option>{% endfor %}</select>
-      </div>
-      <div class="row"><label>Editora</label>
-        <select name="editora">{% for e in editoras %}<option value="{{ e.ID_editora }}">{{ e.Nome_editora }}</option>{% endfor %}</select>
-      </div>
-      <div class="row"><label>Quantidade</label><input name="quantidade" type="number" value="1"></div>
-      <div class="row"><label>Resumo</label><textarea name="resumo"></textarea></div>
-      <button class="btn" type="submit">Salvar</button>
-    </form>
-  {% endif %}
 {% endblock %}

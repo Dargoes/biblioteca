@@ -2,9 +2,9 @@
 {% block title %}Empréstimos{% endblock %}
 {% block content %}
   <h2>Empréstimos</h2>
-  <a class="btn" href="{% url 'emprestimos_add' %}">Adicionar Empréstimo</a>
+  <a href="{% url 'emprestimos_add' %}"><button class="btn btn-success">Adicionar empréstimo</button></a>
   {% if dados %}
-    <table>
+    <table class="table table-striped-columns">
       <thead><tr><th>ID</th><th>Usuário</th><th>Livro</th><th>Data Empréstimo</th><th>Prevista</th><th>Real</th><th>Status</th><th>Ações</th></tr></thead>
       <tbody>
         {% for e in dados %}
@@ -17,26 +17,13 @@
             <td>{{ e.Data_devolucao_real }}</td>
             <td>{{ e.Status_emprestimo }}</td>
             <td class="actions">
-              <a href="{% url 'emprestimos_detalhes' e.ID_emprestimo %}">Ver</a>
-              <a href="{% url 'emprestimos_edit' e.ID_emprestimo %}">Editar</a>
-              <a href="{% url 'emprestimos_delete' e.ID_emprestimo %}">Excluir</a>
+              <a href="{% url 'emprestimos_detalhes' e.ID_emprestimo %}"><button class="btn btn-primary">Ver</button></a>
+              <a href="{% url 'emprestimos_edit' e.ID_emprestimo %}"><button class="btn btn-warning">Editar</button></a>
+              <a href="{% url 'emprestimos_delete' e.ID_emprestimo %}"><button class="btn btn-danger">Excluir</button></a>
             </td>
           </tr>
         {% endfor %}
       </tbody>
     </table>
   {% else %}<p>Nenhum empréstimo cadastrado.</p>{% endif %}
-
-  {% if usuarios and livros %}
-    <h3>Adicionar Empréstimo</h3>
-    <form method="post" action="{% url 'emprestimos_add' %}">
-      {% csrf_token %}
-      <div class="row"><label>Usuário</label><select name="usuario">{% for u in usuarios %}<option value="{{ u.ID_usuario }}">{{ u.Nome_usuario }}</option>{% endfor %}</select></div>
-      <div class="row"><label>Livro</label><select name="livro">{% for l in livros %}<option value="{{ l.ID_livro }}">{{ l.Titulo }}</option>{% endfor %}</select></div>
-      <div class="row"><label>Data empréstimo</label><input name="data_emp" type="date"></div>
-      <div class="row"><label>Data prevista</label><input name="data_prev" type="date"></div>
-      <div class="row"><label>Status</label><select name="status"><option>Emprestado</option><option>Devolvido</option><option>Atrasado</option></select></div>
-      <button class="btn" type="submit">Salvar</button>
-    </form>
-  {% endif %}
 {% endblock %}

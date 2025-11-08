@@ -11,3 +11,9 @@ body {
 table {
     margin-block: 20px;
 }
+
+td a button {
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.875rem !important;
+    border-radius: 0.25rem !important;
+}

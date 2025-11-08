@@ -59,7 +59,7 @@ def emprestimos_add(request):
 
     usuarios = query("SELECT * FROM Usuarios")
     livros = query("SELECT * FROM Livros")
-    return render(request, 'emprestimos.html', {'usuarios': usuarios, 'livros': livros})
+    return render(request, 'emprestimo_add.html', {'usuarios': usuarios, 'livros': livros})
 
 
 @login_required

@@ -7,7 +7,7 @@
     <div class="row mb-3"><label>Nome</label><input class="form-control" name="nome" value="{{ autor.Nome_autor }}" required></div>
     <div class="row mb-3"><label>Nacionalidade</label><input class="form-control" name="nacionalidade" value="{{ autor.Nacionalidade }}"></div>
     <div class="row mb-3"><label>Data de Nascimento</label><input class="form-control" name="data_nasc" type="date" value="{{ autor.Data_nascimento }}"></div>
-    <div class="row mb-3"><label>Biografia</label><textarea name="bio">{{ autor.Biografia }}</textarea></div>
+    <div class="row mb-3"><label>Biografia</label><textarea class="form-control" name="bio">{{ autor.Biografia }}</textarea></div>
     <button class="btn btn-success" type="submit">Salvar</button>
   </form>
 {% endblock %}

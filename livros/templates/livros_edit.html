@@ -4,20 +4,20 @@
   <h2>Editar Livro</h2>
   <form method="post" action="{% url 'livros_edit' livro.ID_livro %}">
     {% csrf_token %}
-    <div class="row"><label>Título</label><input name="titulo" value="{{ livro.Titulo }}" required></div>
-    <div class="row"><label>Autor</label>
-      <select name="autor">{% for a in autores %}<option value="{{ a.ID_autor }}" {% if a.ID_autor == livro.Autor_id %}selected{% endif %}>{{ a.Nome_autor }}</option>{% endfor %}</select>
+    <div class="row mb-3"><label>Título</label><input class="form-control" name="titulo" value="{{ livro.Titulo }}" required></div>
+    <div class="row mb-3"><label>Autor</label>
+      <select class="form-select" name="autor">{% for a in autores %}<option value="{{ a.ID_autor }}" {% if a.ID_autor == livro.Autor_id %}selected{% endif %}>{{ a.Nome_autor }}</option>{% endfor %}</select>
     </div>
-    <div class="row"><label>ISBN</label><input name="isbn" value="{{ livro.ISBN }}"></div>
-    <div class="row"><label>Ano</label><input name="ano" type="number" value="{{ livro.Ano_publicacao }}"></div>
-    <div class="row"><label>Gênero</label>
-      <select name="genero">{% for g in generos %}<option value="{{ g.ID_genero }}" {% if g.ID_genero == livro.Genero_id %}selected{% endif %}>{{ g.Nome_genero }}</option>{% endfor %}</select>
+    <div class="row mb-3"><label>ISBN</label><input class="form-control" name="isbn" value="{{ livro.ISBN }}"></div>
+    <div class="row mb-3"><label>Ano</label><input class="form-control" name="ano" type="number" value="{{ livro.Ano_publicacao }}"></div>
+    <div class="row mb-3"><label>Gênero</label>
+      <select class="form-select" name="genero">{% for g in generos %}<option value="{{ g.ID_genero }}" {% if g.ID_genero == livro.Genero_id %}selected{% endif %}>{{ g.Nome_genero }}</option>{% endfor %}</select>
     </div>
-    <div class="row"><label>Editora</label>
-      <select name="editora">{% for e in editoras %}<option value="{{ e.ID_editora }}" {% if e.ID_editora == livro.Editora_id %}selected{% endif %}>{{ e.Nome_editora }}</option>{% endfor %}</select>
+    <div class="row mb-3"><label>Editora</label>
+      <select class="form-select" name="editora">{% for e in editoras %}<option value="{{ e.ID_editora }}" {% if e.ID_editora == livro.Editora_id %}selected{% endif %}>{{ e.Nome_editora }}</option>{% endfor %}</select>
     </div>
-    <div class="row"><label>Quantidade</label><input name="quantidade" type="number" value="{{ livro.Quantidade_disponivel }}"></div>
-    <div class="row"><label>Resumo</label><textarea name="resumo">{{ livro.Resumo }}</textarea></div>
-    <button class="btn" type="submit">Salvar</button>
+    <div class="row mb-3"><label>Quantidade</label><input class="form-control" name="quantidade" type="number" value="{{ livro.Quantidade_disponivel }}"></div>
+    <div class="row mb-3"><label>Resumo</label><textarea class="form-control" name="resumo">{{ livro.Resumo }}</textarea></div>
+    <button class="btn btn-success" type="submit">Salvar</button>
   </form>
 {% endblock %}

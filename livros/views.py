@@ -53,7 +53,7 @@ def livros_add(request):
     autores = query("SELECT * FROM Autores")
     generos = query("SELECT * FROM Generos")
     editoras = query("SELECT * FROM Editoras")
-    return render(request, 'livros.html', {
+    return render(request, 'livro_add.html', {
         'autores': autores,
         'generos': generos,
         'editoras': editoras

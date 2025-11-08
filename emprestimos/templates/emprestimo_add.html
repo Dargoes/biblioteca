@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container text-white">
+        <h1>Cadastrar Empréstimo</h1>
+        <form method="POST" action="{% url 'emprestimos_add' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="usuario" class="form-label">Usuário</label>
+                <select class="form-select" name="usuario">
+                    <option selected>Escolher usuário</option>
+                    {% for usuario in usuarios %}
+                        <option value="{{ usuario.ID_usuario }}">{{ usuario.Nome_usuario }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="livro" class="form-label">Livro</label>
+                <select class="form-select" name="livro">
+                    <option selected>Escolher usuário</option>
+                    {% for livro in livros %}
+                        <option value="{{ livro.ID_livro }}">{{ livro.Titulo }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="data_emp" class="form-label">Data empréstimo</label>
+                <input type="date" class="form-control" name="data_emp">
+            </div>
+            <div class="mb-3">
+                <label for="data_prev" class="form-label">Data devolução prevista</label>
+                <input type="date" class="form-control" name="data_prev">
+            </div>
+            <!-- <div class="mb-3">
+                <label for="data_real" class="form-label">Data devolução real</label>
+                <input type="date" class="form-control" name="data_real">
+            </div> -->
+            <div class="mb-3">
+                <label for="status" class="form-label">Status</label>
+                <select class="form-select" name="status">
+                    <option selected>Escolher status</option>
+                    <option value="1">Pendente</option>
+                    <option value="2">Devolvido</option>
+                    <option value="3">Atrasado</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success btn-lg">Enviar</button>
+        </form>
+    </div>
+{% endblock %}

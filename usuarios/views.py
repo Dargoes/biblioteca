@@ -25,8 +25,8 @@ def execute(sql, params=None):
 
 @login_required
 def usuarios(request):
-    usuario_id = request.session.get('usuario_logado')
-    dados = query("SELECT * FROM Usuarios WHERE ID_usuario=%s", [usuario_id])
+    # usuario_id = request.session.get('usuario_logado')
+    dados = query("SELECT * FROM Usuarios") #WHERE ID_usuario=%s", [usuario_id])
     return render(request, 'usuarios.html', {'dados': dados})
 
 
