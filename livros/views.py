@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.db import connection
 from django.contrib import messages
+from datetime import date
 
 
 def login_required(view_func):
@@ -33,14 +34,40 @@ def livros(request):
 @login_required
 def livros_add(request):
     if request.method == 'POST':
-        titulo = request.POST['titulo']
-        autor_id = request.POST['autor']
-        isbn = request.POST['isbn']
-        ano = request.POST['ano']
-        genero_id = request.POST['genero']
-        editora_id = request.POST['editora']
-        qtd = request.POST['quantidade']
-        resumo = request.POST['resumo']
+        titulo = request.POST.get('titulo')
+        autor_id = request.POST.get('autor')
+        isbn = request.POST.get('isbn')
+        ano = request.POST.get('ano') or str(date.today())
+        genero_id = request.POST.get('genero')
+        editora_id = request.POST.get('editora')
+        qtd = request.POST.get('quantidade')
+        resumo = request.POST.get('resumo')
+
+        if not autor_id:
+            messages.error(request, "Você deve selecionar um autor para o livro.")
+            return redirect('livros_add')
+        if not genero_id:
+            messages.error(request, "Você deve selecionar um genero literário para o livro.")
+            return redirect('livros_add')
+        if not editora_id:
+            messages.error(request, "Você deve selecionar uma editora para o livro.")
+            return redirect('livros_add')
+        if not titulo:
+            messages.error(request, "Você deve indicar um titulo para o livro.")
+            return redirect('livros_add')
+        if not isbn:
+            messages.error(request, "Você deve indicar um isbn para o livro.")
+            return redirect('livros_add')
+        if not qtd:
+            messages.error(request, "Você deve indicar uma quantidade para o livro.")
+            return redirect('livros_add')
+        elif int(qtd) < 0:
+            messages.error(request, "Você deve indicar uma quantidade valida para o livro.")
+            return redirect('livros_add')
+        if not resumo:
+            messages.error(request, "Você deve indicar um resumo para o livro.")
+            return redirect('livros_add')
+        
 
         execute("""
             INSERT INTO Livros 
@@ -63,14 +90,14 @@ def livros_add(request):
 @login_required
 def livros_edit(request, id):
     if request.method == 'POST':
-        titulo = request.POST['titulo']
-        autor_id = request.POST['autor']
-        isbn = request.POST['isbn']
-        ano = request.POST['ano']
-        genero_id = request.POST['genero']
-        editora_id = request.POST['editora']
-        qtd = request.POST['quantidade']
-        resumo = request.POST['resumo']
+        titulo = request.POST.get('titulo')
+        autor_id = request.POST.get('autor')
+        isbn = request.POST.get('isbn')
+        ano = request.POST.get('ano')
+        genero_id = request.POST.get('genero')
+        editora_id = request.POST.get('editora')
+        qtd = request.POST.get('quantidade')
+        resumo = request.POST.get('resumo')
 
         execute("""
             UPDATE Livros 

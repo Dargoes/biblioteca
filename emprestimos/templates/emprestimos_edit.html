@@ -41,7 +41,7 @@
     <div class="row mb-3">
       <label>Status</label>
       <select class="form-select" name="status">
-        <option {% if emprestimo.Status_emprestimo == 'Emprestado' %}selected{% endif %}>Emprestado</option>
+        <option {% if emprestimo.Status_emprestimo == 'Emprestado' %}selected{% endif %}>Pendente</option>
         <option {% if emprestimo.Status_emprestimo == 'Devolvido' %}selected{% endif %}>Devolvido</option>
         <option {% if emprestimo.Status_emprestimo == 'Atrasado' %}selected{% endif %}>Atrasado</option>
       </select>

@@ -29,7 +29,7 @@ def generos(request):
 @login_required
 def generos_add(request):
     if request.method == 'POST':
-        nome = request.POST['nome']
+        nome = request.POST.get('nome')
         execute("INSERT INTO Generos (Nome_genero) VALUES (%s)", [nome])
         return redirect('generos')
     return render(request, 'genero_add.html')
@@ -37,7 +37,7 @@ def generos_add(request):
 @login_required
 def generos_edit(request, id):
     if request.method == 'POST':
-        nome = request.POST['nome']
+        nome = request.POST.get('nome')
         execute("UPDATE Generos SET Nome_genero=%s WHERE ID_genero=%s", [nome, id])
         return redirect('generos')
     genero = query("SELECT * FROM Generos WHERE ID_genero=%s", [id])[0]

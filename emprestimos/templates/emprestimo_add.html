@@ -5,7 +5,7 @@
         <h1>Cadastrar Empréstimo</h1>
         <form method="POST" action="{% url 'emprestimos_add' %}">
             {% csrf_token %}
-            <div class="mb-3">
+            {% comment %} <div class="mb-3">
                 <label for="usuario" class="form-label">Usuário</label>
                 <select class="form-select" name="usuario">
                     <option selected>Escolher usuário</option>
@@ -13,11 +13,11 @@
                         <option value="{{ usuario.ID_usuario }}">{{ usuario.Nome_usuario }}</option>
                     {% endfor %}
                 </select>
-            </div>
+            </div> {% endcomment %}
             <div class="mb-3">
                 <label for="livro" class="form-label">Livro</label>
                 <select class="form-select" name="livro">
-                    <option selected>Escolher usuário</option>
+                    <option value="" disabled selected>Escolher livro</option>
                     {% for livro in livros %}
                         <option value="{{ livro.ID_livro }}">{{ livro.Titulo }}</option>
                     {% endfor %}

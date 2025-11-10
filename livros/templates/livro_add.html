@@ -12,7 +12,7 @@
             <div class="mb-3">
                 <label for="autor" class="form-label">Autor</label>
                 <select class="form-select" name="autor">
-                    <option selected>Escolher autor</option>
+                    <option value="" disabled selected>Escolher autor</option>
                     {% for autor in autores %}
                         <option value="{{ autor.ID_autor }}">{{ autor.Nome_autor }}</option>
                     {% endfor %}
@@ -29,7 +29,7 @@
             <div class="mb-3">
                 <label for="genero" class="form-label">Gêneros</label>
                 <select class="form-select" name="genero">
-                    <option selected>Escolher gênero</option>
+                    <option value="" disabled selected>Escolher gênero</option>
                     {% for genero in generos %}
                         <option value="{{ genero.ID_genero }}">{{ genero.Nome_genero }}</option>
                     {% endfor %}
@@ -38,7 +38,7 @@
             <div class="mb-3">
                 <label for="editora" class="form-label">Editora</label>
                 <select class="form-select" name="editora">
-                    <option selected>Escolher editora</option>
+                    <option value="" disabled selected>Escolher editora</option>
                     {% for editora in editoras %}
                         <option value="{{ editora.ID_editora }}">{{ editora.Nome_editora }}</option>
                     {% endfor %}

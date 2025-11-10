@@ -29,10 +29,10 @@ def autores(request):
 @login_required
 def autores_add(request):
     if request.method == 'POST':
-        nome = request.POST['nome']
-        nac = request.POST['nacionalidade']
-        data = request.POST['data_nasc']
-        bio = request.POST['bio']
+        nac = request.POST.get('nacionalidade')
+        bio = request.POST.get('bio')
+        nome = request.POST.get('nome')
+        data = request.POST.get('data_nasc') or None
         execute("INSERT INTO Autores (Nome_autor, Nacionalidade, Data_nascimento, Biografia) VALUES (%s, %s, %s, %s)",
                 [nome, nac, data, bio])
         return redirect('autores')
