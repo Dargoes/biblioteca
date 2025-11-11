@@ -58,11 +58,19 @@ def usuarios_edit(request, id):
 
 @login_required
 def usuarios_delete(request, id):
+    usuario_id = request.session.get('usuario_logado')
+
+    if usuario_id != id:
+        messages.error(request, "Você só pode excluir seu próprio perfil.")
+        return redirect('usuarios')
+    
     execute("DELETE FROM Usuarios WHERE ID_usuario=%s", [id])
     return redirect('usuarios')
 
 @login_required
 def usuario_detalhes(request, id):
+    request.session.flush()
+    messages.info(request, "Você saiu da conta.")
     usuario = query("SELECT * FROM Usuarios WHERE ID_usuario=%s", [id])[0]
     return render(request, 'usuario_detalhes.html', {'usuario': usuario})
 
