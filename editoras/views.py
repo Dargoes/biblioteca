@@ -47,7 +47,10 @@ def editoras_edit(request, id):
 
 @login_required
 def editoras_delete(request, id):
-    execute("DELETE FROM Editoras WHERE ID_editora=%s", [id])
+    try:
+        execute("DELETE FROM Editoras WHERE ID_editora=%s", [id])
+    except (TypeError, ValueError):
+        messages.error(request, "não foi possivel realizar")
     return redirect('editoras')
 
 @login_required

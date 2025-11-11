@@ -128,7 +128,10 @@ def livros_edit(request, id):
 
 @login_required
 def livros_delete(request, id):
-    execute("DELETE FROM Livros WHERE ID_livro = %s", [id])
+    try:
+        execute("DELETE FROM Livros WHERE ID_livro = %s", [id])
+    except (TypeError, ValueError):
+        messages.error(request, "não foi possivel realizar")
     return redirect('livros')
 
 

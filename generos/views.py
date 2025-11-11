@@ -45,7 +45,10 @@ def generos_edit(request, id):
 
 @login_required
 def generos_delete(request, id):
-    execute("DELETE FROM Generos WHERE ID_genero=%s", [id])
+    try:
+        execute("DELETE FROM Generos WHERE ID_genero=%s", [id])
+    except (TypeError, ValueError):
+        messages.error(request, "não foi possivel realizar")
     return redirect('generos')
 
 @login_required

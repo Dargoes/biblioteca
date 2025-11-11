@@ -181,7 +181,10 @@ def emprestimos_edit(request, id):
 
 @login_required
 def emprestimos_delete(request, id):
-    execute("DELETE FROM Emprestimos WHERE ID_emprestimo = %s", [id])
+    try:
+        execute("DELETE FROM Emprestimos WHERE ID_emprestimo = %s", [id])
+    except (TypeError, ValueError):
+        messages.error(request, "não foi possivel realizar")
     return redirect('emprestimos')
 
 

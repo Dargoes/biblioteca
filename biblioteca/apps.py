@@ -47,9 +47,9 @@ class BibliotecaConfig(AppConfig):
                 Editora_id INT,
                 Quantidade_disponivel INT,
                 Resumo TEXT,
-                FOREIGN KEY (Autor_id) REFERENCES Autores(ID_autor) ON DELETE CASCADE,
-                FOREIGN KEY (Genero_id) REFERENCES Generos(ID_genero) ON DELETE CASCADE,
-                FOREIGN KEY (Editora_id) REFERENCES Editoras(ID_editora) ON DELETE CASCADE
+                FOREIGN KEY (Autor_id) REFERENCES Autores(ID_autor),
+                FOREIGN KEY (Genero_id) REFERENCES Generos(ID_genero),
+                FOREIGN KEY (Editora_id) REFERENCES Editoras(ID_editora)
             ) ENGINE=InnoDB;
             """,
             """
@@ -73,7 +73,7 @@ class BibliotecaConfig(AppConfig):
                 Data_devolucao_real DATE,
                 Status_emprestimo ENUM('pendente', 'devolvido', 'atrasado'),
                 FOREIGN KEY (Usuario_id) REFERENCES Usuarios(ID_usuario) ON DELETE CASCADE,
-                FOREIGN KEY (Livro_id) REFERENCES Livros(ID_livro) ON DELETE CASCADE
+                FOREIGN KEY (Livro_id) REFERENCES Livros(ID_livro) 
             ) ENGINE=InnoDB;
             """
         ]

@@ -32,7 +32,7 @@ CREATE TABLE Livros (
     Resumo TEXT,
     FOREIGN KEY (Autor_id) REFERENCES Autores(ID_autor),
     FOREIGN KEY (Genero_id) REFERENCES Generos(ID_genero),
-    FOREIGN KEY (Editora_id) REFERENCES Editoras(ID_editora) ON DELETE CASCADE
+    FOREIGN KEY (Editora_id) REFERENCES Editoras(ID_editora)
 );
 
 CREATE TABLE Usuarios (

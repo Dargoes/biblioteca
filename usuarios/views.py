@@ -64,7 +64,10 @@ def usuarios_delete(request, id):
         messages.error(request, "Você só pode excluir seu próprio perfil.")
         return redirect('usuarios')
     
-    execute("DELETE FROM Usuarios WHERE ID_usuario=%s", [id])
+    try:
+        execute("DELETE FROM Usuarios WHERE ID_usuario=%s", [id])
+    except (TypeError, ValueError):
+        messages.error(request, "não foi possivel realizar")
     return redirect('usuarios')
 
 @login_required
